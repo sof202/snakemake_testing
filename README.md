@@ -11,3 +11,6 @@ Things I want to learn/test:
 - [ ] Dependency management
 - [ ] Starting pipeline half-way through
 - [ ] Chopping/changing modules
+- [ ] Config file usage
+- [ ] Job scheduler capabilities
+- [ ] Conditionality
