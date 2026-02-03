@@ -1,0 +1,9 @@
+from snakemake.utils import min_version
+
+min_version("9.0.0")
+
+include: "rules/create.smk"
+
+rule all:
+    input:
+        "data/data.tsv"
