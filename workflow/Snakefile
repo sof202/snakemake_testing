@@ -6,7 +6,11 @@ configfile: "config/config.yaml"
 
 include: "rules/create.smk"
 
+TARGETS = [
+    f"{config['data_directory']}/A.tsv",
+    f"{config['data_directory']}/B.tsv"
+]
+
 rule all:
     input:
-        expand("{data_directory}/A.tsv", data_directory=config["data_directory"]),
-        expand("{data_directory}/B.tsv", data_directory=config["data_directory"])
+        TARGETS
