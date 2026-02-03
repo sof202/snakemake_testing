@@ -46,6 +46,13 @@ dataframe/series objects
 - `subpath` looks useful for anything you might do normally with `pathlib.Path`
 - `flatten` flattens lists (nicer syntax than what you'd normally need to do)
 
+### Your own helpers
+
+You can write normal python inside of `.smk` or just the `Snakefile`. The
+standard name for the helpers `.smk` file is `common.smk`. I don't really like
+this name as it is super generic (and is no better than `utils.py`) but
+whatever, standards gonna standards I guess.
+
 ## Reporting
 
 You can make restructuredText reports from snakemake workflows. You can choose
