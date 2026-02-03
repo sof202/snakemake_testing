@@ -2,8 +2,11 @@ from snakemake.utils import min_version
 
 min_version("9.0.0")
 
+configfile: "config/config.yaml"
+
 include: "rules/create.smk"
 
 rule all:
     input:
-        "data/data.tsv"
+        "data/A.tsv",
+        "data/B.tsv"

@@ -1,8 +1,7 @@
 rule create_data:
     input:
-        "data/input/file.txt"
+        "data/input/{sample}.txt"
     output:
-        "data/data.tsv"
+        "data/{sample}.tsv"
     shell:
         "generate_data_snakemake {input} > {output}"
-
