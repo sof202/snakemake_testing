@@ -1,1 +1,2 @@
+data_directory: data
 samples: ["A","B"]

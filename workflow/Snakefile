@@ -8,5 +8,5 @@ include: "rules/create.smk"
 
 rule all:
     input:
-        "data/A.tsv",
-        "data/B.tsv"
+        expand("{data_directory}/A.tsv", data_directory=config["data_directory"]),
+        expand("{data_directory}/B.tsv", data_directory=config["data_directory"])
