@@ -103,3 +103,22 @@ project
 You can use [snakedeploy](https://snakedeploy.readthedocs.io/en/stable/) for
 automating deployment. If you comply with certain rules you can get your
 workflows automatically listed on their workflow hub.
+
+## R scripts
+
+You might want to ensure that indeed, the Rscript has access to the snakemake
+S4 object with something like:
+
+```R
+if (!exists("is_sourced") || !is_sourced) {
+  if (exists("snakemake")) {
+    main(...)
+  } else {
+    warning(
+      "Script executed outside Snakemake context. ",
+      "Provide arguments manually or source() individual functions."
+    )
+  }
+}
+
+```
