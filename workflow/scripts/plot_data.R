@@ -57,5 +57,4 @@ main <- function(in_files, out_file) {
   ))
 }
 
-print(snakemake@input)
 main(snakemake@input, snakemake@output[[1]])
