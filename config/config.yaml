@@ -5,6 +5,10 @@ column_names:
   x: "x"
   y: "sin_x"
 
-column_names_in_plot:
+# Some characters are ill-advised to be used in the column names of a
+# data.table (R) or pandas data frame (python). However, these special
+# characters might be wanted in the plot labels (hence the split between the
+# two)
+plot_axes_labels:
   x: "x"
   y: "sin(x)"

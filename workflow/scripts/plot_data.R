@@ -32,7 +32,7 @@ read_data <- function(file_list, column_names) {
   return(full_dataset)
 }
 
-make_plot <- function(dataset, column_names, column_names_in_plot) {
+make_plot <- function(dataset, column_names, plot_axes_labels) {
   ggplot(
     data = dataset,
     mapping = aes(
@@ -41,18 +41,18 @@ make_plot <- function(dataset, column_names, column_names_in_plot) {
     )
   ) +
     geom_line() +
-    xlab(column_names_in_plot[["x"]]) +
-    ylab(column_names_in_plot[["y"]]) +
+    xlab(plot_axes_labels[["x"]]) +
+    ylab(plot_axes_labels[["y"]]) +
     theme_bw()
 }
 
 
-main <- function(in_files, out_file, column_names, column_names_in_plot) {
+main <- function(in_files, out_file, column_names, plot_axes_labels) {
   full_dataset <- read_data(in_files, column_names)
   plot <- make_plot(
     full_dataset,
     column_names,
-    column_names_in_plot
+    plot_axes_labels
   )
   suppressMessages(ggplot2::ggsave(
     out_file,
@@ -64,5 +64,5 @@ main(
   snakemake@input,
   snakemake@output[[1]],
   snakemake@config[["column_names"]],
-  snakemake@config[["column_names_in_plot"]]
+  snakemake@config[["plot_axes_labels"]]
 )
