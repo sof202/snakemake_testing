@@ -60,9 +60,18 @@ main <- function(in_files, out_file, column_names, plot_axes_labels) {
   ))
 }
 
-main(
-  snakemake@input,
-  snakemake@output[[1]],
-  snakemake@config[["column_names"]],
-  snakemake@config[["plot_axes_labels"]]
-)
+if (!exists("is_sourced") || !is_sourced) {
+  if (exists("snakemake")) {
+    main(
+      snakemake@input,
+      snakemake@output[[1]],
+      snakemake@config[["column_names"]],
+      snakemake@config[["plot_axes_labels"]]
+    )
+  } else {
+    warning(
+      "Script executed outside Snakemake context. ",
+      "Provide arguments manually or source() individual functions."
+    )
+  }
+}
