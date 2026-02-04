@@ -123,3 +123,25 @@ if (!exists("is_sourced") || !is_sourced) {
 }
 
 ```
+
+## Python scripts
+
+Similarly to [R scripts](#r-scripts), you should make sure that python scripts
+aren't to be ran outside of the snakemake context. You can do this by checking
+for import errors. (This actually would proc regardless if you are importing
+the snakemake package, but it's not required, hence writing):
+
+```python
+if __name__ == "__main__":
+    try:
+        from snakemake.script import snakemake
+        main(snakemake)
+
+    except ImportError:
+        print(
+            "Error: Script executed outside Snakemake context. ",
+            "Please only use this via the `snakemake` workflow manager.\n",
+            "To do this, use `snakemake --cores all --sdn conda`",
+        )
+
+```
