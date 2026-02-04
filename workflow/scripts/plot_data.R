@@ -71,7 +71,8 @@ if (!exists("is_sourced") || !is_sourced) {
   } else {
     warning(
       "Script executed outside Snakemake context. ",
-      "Provide arguments manually or source() individual functions."
+      "Please only use this via the `snakemake` workflow manager.\n",
+      "To do this, use `snakemake --cores all --sdn conda`"
     )
   }
 }
