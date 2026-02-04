@@ -30,3 +30,8 @@ snakemake environment without modifying your main conda installation.
 
 Well, I say recent, but this version is from July 2024. But it's still worth
 noting.
+
+### Caching
+
+The conda environment that snakemake creates for the workflow is cached. This
+reduces start up time in subsequent runs.
