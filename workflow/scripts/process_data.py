@@ -1,10 +1,13 @@
+from pathlib import Path
 import pandas as pd
 import numpy as np
 
 REQUIRED_KEYS = {"x", "y"}
 
 
-def add_sin_information(in_path, out_path, colnames):
+def add_sin_information(
+    in_path: Path, out_path: Path, colnames: dict[str, str]
+):
     if not REQUIRED_KEYS.issubset(colnames.keys()):
         raise KeyError(
             f"Your configuration is malformed. "
@@ -24,8 +27,8 @@ if __name__ == "__main__":
         from snakemake.script import snakemake
 
         add_sin_information(
-            snakemake.input[0],
-            snakemake.output[0],
+            Path(snakemake.input[0]),
+            Path(snakemake.output[0]),
             snakemake.config["column_names"],
         )
 
