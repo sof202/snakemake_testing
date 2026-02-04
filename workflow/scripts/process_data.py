@@ -1,4 +1,3 @@
-from snakemake.script import snakemake
 import pandas as pd
 import numpy as np
 
@@ -13,8 +12,17 @@ def add_sin_information(in_path, out_path, colnames):
 
 
 if __name__ == "__main__":
-    add_sin_information(
-        snakemake.input[0],
-        snakemake.output[0],
-        snakemake.config["column_names"],
-    )
+    try:
+        from snakemake.script import snakemake
+        add_sin_information(
+            snakemake.input[0],
+            snakemake.output[0],
+            snakemake.config["column_names"],
+        )
+
+    except ImportError:
+        print(
+            "Error: Script executed outside Snakemake context. ",
+            "Please only use this via the `snakemake` workflow manager.\n",
+            "To do this, use `snakemake --cores all --sdn conda`",
+        )
