@@ -6,7 +6,6 @@ min_version("9.0.0")
 configfile: "config/config.yaml"
 
 
-include: "rules/common.smk"
 include: "rules/create.smk"
 include: "rules/process.smk"
 include: "rules/plot.smk"
@@ -15,9 +14,15 @@ include: "rules/optional_add.smk"
 
 rule all:
     input:
-        get_targets,
+        expand(
+            "{data_directory}/plots/plot.png",
+            data_directory=config["data_directory"],
+        ),
 
 rule add_all:
     input:
-        get_add_targets,
-
+        expand(
+            "{data_directory}/{sample}_plus_one.txt",
+            data_directory=config["data_directory"],
+            sample=config["samples"]
+        )
