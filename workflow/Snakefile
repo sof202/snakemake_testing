@@ -2,12 +2,16 @@ from snakemake.utils import min_version
 
 min_version("9.0.0")
 
+
 configfile: "config/config.yaml"
+
 
 include: "rules/common.smk"
 include: "rules/create.smk"
 include: "rules/process.smk"
+include: "rules/plot.smk"
+
 
 rule all:
     input:
-        get_targets
+        get_targets,
