@@ -59,3 +59,20 @@ So yes, it is truly just like GNU make. If you change a script, it will update
 everything downstream in the DAG. If you change a file (intermediate or input)
 it will update everything downstream in the DAG. You can set up rules that
 branch and turn. It all makes sense.
+
+## DAG creation
+
+If you want to visualise the pipeline, you'd normally need to make some kinda
+mermaid diagram or perhaps hop into one of the many many flowchart creation
+webapps out there. However, with snakemake, you can just create one:
+
+```bash
+snakemake --dag
+```
+
+This creates a `dot` language file. To render it as an svg, you need `dot` to
+render the file. You can do this like so:
+
+```bash
+snakemake --dag | dot -Tsvg > filename.svg
+```
