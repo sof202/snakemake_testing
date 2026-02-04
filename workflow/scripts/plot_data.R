@@ -1,8 +1,7 @@
 library(ggplot2)
 
-expected_colnames <- c("x", "sin_x")
-
-read_data <- function(file_list) {
+read_data <- function(file_list, column_names) {
+  column_names <- c(column_names[["x"]], column_names[["y"]])
   full_dataset <- data.table::data.table()
 
   for (file in file_list) {
@@ -12,14 +11,14 @@ read_data <- function(file_list) {
       sep = "\t"
     )
 
-    if (ncol(data) != length(expected_colnames)) {
+    if (ncol(data) != length(column_names)) {
       warning(paste(
         "File",
         file,
         "has",
         ncol(data),
         "columns but expected",
-        length(expected_colnames)
+        length(column_names)
       ))
     }
 
@@ -29,27 +28,31 @@ read_data <- function(file_list) {
     )
   }
 
-  data.table::setnames(full_dataset, expected_colnames)
+  data.table::setnames(full_dataset, column_names)
   return(full_dataset)
 }
 
-make_plot <- function(dataset, x_var, y_var) {
+make_plot <- function(dataset, column_names, column_names_in_plot) {
   ggplot(
     data = dataset,
-    mapping = aes(x = .data[[x_var]], y = .data[[y_var]])
+    mapping = aes(
+      x = .data[[column_names[["x"]]]],
+      y = .data[[column_names[["y"]]]]
+    )
   ) +
     geom_line() +
-    ylab("sin(x)") +
+    xlab(column_names_in_plot[["x"]]) +
+    ylab(column_names_in_plot[["y"]]) +
     theme_bw()
 }
 
 
-main <- function(in_files, out_file) {
-  full_dataset <- read_data(in_files)
+main <- function(in_files, out_file, column_names, column_names_in_plot) {
+  full_dataset <- read_data(in_files, column_names)
   plot <- make_plot(
     full_dataset,
-    expected_colnames[[1]],
-    expected_colnames[[2]]
+    column_names,
+    column_names_in_plot
   )
   suppressMessages(ggplot2::ggsave(
     out_file,
@@ -57,4 +60,9 @@ main <- function(in_files, out_file) {
   ))
 }
 
-main(snakemake@input, snakemake@output[[1]])
+main(
+  snakemake@input,
+  snakemake@output[[1]],
+  snakemake@config[["column_names"]],
+  snakemake@config[["column_names_in_plot"]]
+)

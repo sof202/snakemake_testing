@@ -1,2 +1,10 @@
 data_directory: data
 samples: ["A","B"]
+
+column_names:
+  x: "x"
+  y: "sin_x"
+
+column_names_in_plot:
+  x: "x"
+  y: "sin(x)"
