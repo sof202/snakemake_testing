@@ -8,6 +8,24 @@ REQUIRED_KEYS = {"x", "y"}
 def add_sin_information(
     in_path: Path, out_path: Path, colnames: dict[str, str]
 ):
+    """Add sine-transformed column to data.
+
+    Reads a CSV file with x-values, computes sin(x) for each value,
+    and writes the result as a tab-separated file.
+
+    Args:
+        in_path: Path to input CSV file (single column expected).
+        out_path: Path where output TSV file should be written.
+        colnames: Dictionary with required keys:
+            - "x": Name of the input column.
+            - "y": Name to use for the output sine column.
+
+    Raises:
+        ValueError: If colnames doesn't contain required keys.
+        FileNotFoundError: If input file doesn't exist.
+        KeyError: If specified column names conflict with pandas operations.
+
+    """
     if not REQUIRED_KEYS.issubset(colnames.keys()):
         raise KeyError(
             f"Your configuration is malformed. "
