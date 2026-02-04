@@ -52,3 +52,10 @@ channel_priority strict'.
 ```bash
 conda config --set channel_priority strict
 ```
+
+## Make equivalency
+
+So yes, it is truly just like GNU make. If you change a script, it will update
+everything downstream in the DAG. If you change a file (intermediate or input)
+it will update everything downstream in the DAG. You can set up rules that
+branch and turn. It all makes sense.
