@@ -35,3 +35,20 @@ noting.
 
 The conda environment that snakemake creates for the workflow is cached. This
 reduces start up time in subsequent runs.
+
+### Channel priority
+
+snakemake advised me that I turn on strict channel priority. So I did. It is
+likely best practice beyond snakemake too (from a reproducibility standpoint).
+
+```
+Your conda installation is not configured to use strict channel priorities.
+This is however important for having robust and correct environments (for
+details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please
+consider to configure strict priorities by executing 'conda config --set
+channel_priority strict'.
+```
+
+```bash
+conda config --set channel_priority strict
+```
