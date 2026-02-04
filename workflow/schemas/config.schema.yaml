@@ -1,0 +1,86 @@
+$schema: "https://json-schema.org/draft-07/schema#"
+title: "Data Visualization Configuration Schema"
+description: "Schema for configuring data processing and plotting parameters"
+type: "object"
+
+properties:
+  data_directory:
+    type: "string"
+    description: "Path to directory containing data files"
+    pattern: "^[^<>:\"/\\\\|?*]+$"  # No invalid filesystem characters
+    default: "data"
+    example: "data"
+    comment: "# Path to directory containing data files"
+
+  samples:
+    type: "array"
+    description: "List of sample identifiers to process"
+    minItems: 1
+    items:
+      type: "string"
+      pattern: "^[A-Za-z0-9_-]+$"  # Alphanumeric with underscores/hyphens
+    default: ["A", "B"]
+    example: ["A", "B"]
+    comment: |
+      # List of sample identifiers to process
+      # Must be valid R/python variable names (alphanumeric + underscore/hyphen)
+
+  column_names:
+    type: "object"
+    description: "Column names to use in data frames (R data.table / pandas)"
+    properties:
+      x:
+        type: "string"
+        description: "Column name for x-axis data"
+        pattern: "^[A-Za-z_][A-Za-z0-9_]*$"  # Valid programming identifier
+        default: "x"
+        example: "x"
+        comment: "# Column name for x-axis data (must be valid R/python identifier)"
+
+      y:
+        type: "string"
+        description: "Column name for y-axis data"
+        pattern: "^[A-Za-z_][A-Za-z0-9_]*$"
+        default: "y"
+        example: "sin_x"
+        comment: "# Column name for y-axis data (must be valid R/python identifier)"
+
+    additionalProperties: false  # Only allow x and y
+    required: ["x", "y"]
+    comment: |
+      # Column names for use in data frames
+      # These must be valid identifiers in R (data.table) and Python (pandas)
+      # Avoid special characters except underscore
+
+  plot_axes_labels:
+    type: "object"
+    description: "Human-readable labels for plot axes (can contain special characters)"
+    properties:
+      x:
+        type: "string"
+        description: "Label for x-axis in plots"
+        minLength: 1
+        default: "x"
+        example: "x"
+        comment: "# Human-readable label for x-axis (can contain special characters)"
+
+      y:
+        type: "string"
+        description: "Label for y-axis in plots"
+        minLength: 1
+        default: "y"
+        example: "sin(x)"
+        comment: "# Human-readable label for y-axis (can contain special characters)"
+
+    additionalProperties: false  # Only allow x and y
+    required: ["x", "y"]
+    comment: |
+      # Human-readable labels for plot axes
+      # These can contain special characters, LaTeX, unicode, etc.
+      # Used in plot titles/axes, not in data frame column names
+
+required:
+  - data_directory
+  - samples
+  - column_names
+  - plot_axes_labels
