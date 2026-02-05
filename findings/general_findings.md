@@ -147,3 +147,22 @@ actually looking at the code review and instead just refer to the agent. This
 means potentially bad code can go in, while potentially good code can be
 rejected. I will rescind these comments if I don't see evidence of this of
 course.
+
+## Wrappers and modularity
+
+I'm not gonna use it here as there's no point. But it is possible to add
+wrappers to your rules which means you don't have to type out the command
+yourself. I'm not sure if this is best practice, but it could be useful if you
+don't want to create loads of containers (as the wrapper will come with one).
+
+For example, there is one for
+[`samtools sort`](https://github.com/snakemake/snakemake-wrappers/blob/master/bio/samtools/sort/wrapper.py)
+which comes with a conda environment with minimal dependencies. This seems very
+useful for the average bioinformatics workflow (there's tonnes of these
+wrappers too).
+
+In terms of modularity, provided you put grouped rules into individual `.smk`
+files (like done in this repo) you can choose to `include` whichever rules you
+want. This even works a step further as you can import rules from other git
+repositories online (be that your own or others). This saves you on writing the
+same shit over and over again.
