@@ -132,3 +132,18 @@ to update the snakemake environment by grabbing my
 For more information on this you could go and look at the
 [issue](https://github.com/snakemake/snakemake/issues/3963) and
 [pr](https://github.com/snakemake/snakemake/pull/3965) I made.
+
+## GitHub AI usage
+
+So in the last section I spoke of fixing an issue I found for snakemake. They
+are using coderabbit (lazyness) to review code reviews. I hope that they aren't
+using this religously. It made some suggestions that are just false and one of
+the changes was, although correct (which was very useful) gave me a solution
+that completely went against the current style of implementation. It also
+didn't catch a way worse bug (which admittedly was rather difficult to spot).
+
+My main issue with these code review agents is that maintainers will stop
+actually looking at the code review and instead just refer to the agent. This
+means potentially bad code can go in, while potentially good code can be
+rejected. I will rescind these comments if I don't see evidence of this of
+course.
