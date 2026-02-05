@@ -166,3 +166,11 @@ files (like done in this repo) you can choose to `include` whichever rules you
 want. This even works a step further as you can import rules from other git
 repositories online (be that your own or others). This saves you on writing the
 same shit over and over again.
+
+## Common Workflow Language (CWL)
+
+I think this allows for interoperability between snakemake and nextflow
+(primarily, its a common language and so in principle all workflow managers
+could use this). Look
+[here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#common-workflow-language-cwl-support)
+for details.
