@@ -1,9 +1,7 @@
-from snakemake.utils import min_version
+from snakemake.utils import validate
 
-min_version("9.0.0")
-
-
-configfile: "config/config.yaml"
+configfile: "config/config_example.yaml"
+validate(config, schema="schemas/config.schema.yaml")
 
 
 include: "rules/create.smk"
