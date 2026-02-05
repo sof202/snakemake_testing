@@ -182,3 +182,15 @@ I think this allows for interoperability between snakemake and nextflow
 could use this). Look
 [here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#common-workflow-language-cwl-support)
 for details.
+
+## Deployment
+
+This would be super fuckin useful for something like the isoforms.com project.
+You can specify (with the correct plugin) a destination that isn't just a local
+file. For example, you could put the final output onto an aws s3 bucket. This
+way, every time you update your code or an intermediate file in the analysis
+(gtf files here), you will be able to re-upload to aws with the click of a
+button (super useful).
+
+If you are to use this, you should probably start being more explicit in your
+file paths (for example, wrapping local files with `local()`).
