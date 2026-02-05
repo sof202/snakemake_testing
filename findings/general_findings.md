@@ -94,7 +94,7 @@ So there is a way to explicitly check the configuration file (with types and
 all). You'd need to make a schema and then explictly validate it.
 
 ```
-$schema: "https://json-schema.org/draft-06/schema#"
+$schema: "http://json-schema.org/draft-06/schema#"
 
 description: an entry in the sample sheet
 properties:
@@ -119,3 +119,16 @@ poor coupling between the schema and any example config files you want to give
 for the user to actually edit. The best thing I can think of (that's not overly
 advanced) would be to make a script that generates the example config file from
 this schema.
+
+#### Problems
+
+So there's a big problem in snakemake right now that means you cannot really
+pick the schema you want. The problem is two fold as the docs incorrectly state
+what you can do. I've made my own fix, but I kept failing to adhere to all of
+snakemake's different rules in place (set by maintainer). For now you'd want
+to update the snakemake environment by grabbing my
+[fork](https://github.com/sof202/snakemake/) and installing that via pip.
+
+For more information on this you could go and look at the
+[issue](https://github.com/snakemake/snakemake/issues/3963) and
+[pr](https://github.com/snakemake/snakemake/pull/3965) I made.
