@@ -2,7 +2,9 @@ rule process_data:
     input:
         "{data_directory}/{sample}.tsv",
     output:
-        "{data_directory}/{sample}_dataframe.tsv",
+        report(
+            "{data_directory}/{sample}_dataframe.tsv", caption="../report/process.rst"
+        ),
     conda:
         "../envs/pandas.yaml"
     script:
