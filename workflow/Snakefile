@@ -1,6 +1,9 @@
 from snakemake.utils import validate
 
+
 configfile: "config/config_example.yaml"
+
+
 validate(config, schema="schemas/config.schema.yaml")
 
 
@@ -17,10 +20,11 @@ rule all:
             data_directory=config["data_directory"],
         ),
 
+
 rule add_all:
     input:
         expand(
             "{data_directory}/{sample}_plus_one.txt",
             data_directory=config["data_directory"],
-            sample=config["samples"]
-        )
+            sample=config["samples"],
+        ),
