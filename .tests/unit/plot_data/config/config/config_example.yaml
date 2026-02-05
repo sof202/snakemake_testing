@@ -1,0 +1,26 @@
+# Configuration
+# ==================================
+# Generated from schema - edit values as needed
+
+# Path to directory containing data files
+data_directory: data
+
+# List of sample identifiers to process
+# Must be valid R/python variable names (alphanumeric + underscore/hyphen)
+samples: ['A', 'B']
+
+column_names:
+  # Column name for x-axis data (must be valid R/python identifier)
+  # Constraints: must be valid R/Python identifier (letters, numbers, underscore, starting with letter)
+  x: x
+
+  # Column name for y-axis data (must be valid R/python identifier)
+  # Constraints: must be valid R/Python identifier (letters, numbers, underscore, starting with letter)
+  y: sin_x
+
+plot_axes_labels:
+  # Human-readable label for x-axis (can contain special characters)
+  x: x
+
+  # Human-readable label for y-axis (can contain special characters)
+  y: sin(x)
