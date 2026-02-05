@@ -167,6 +167,14 @@ want. This even works a step further as you can import rules from other git
 repositories online (be that your own or others). This saves you on writing the
 same shit over and over again.
 
+### Configuration
+
+So all of these snakemake workflows come with a configuration file right? Well
+it would be a spot of bother if you were bound to how they defined it. So you
+can actually override this config when importing a module (which is lovely).
+It would appear that best practice here says you should nest their config file
+into your own (under a section named after the workflow it is for).
+
 ## Common Workflow Language (CWL)
 
 I think this allows for interoperability between snakemake and nextflow
