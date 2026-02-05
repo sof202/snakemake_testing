@@ -112,6 +112,8 @@ main <- function(in_files, out_file, column_names, plot_axes_labels) {
   suppressMessages(ggplot2::ggsave(
     out_file,
     plot,
+    width = 3,
+    height = 3,
   ))
 }
 
