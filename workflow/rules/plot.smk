@@ -6,7 +6,10 @@ rule plot_data:
             sample=config["samples"],
         ),
     output:
-        "{data_directory}/plots/plot.png",
+        report(
+            "{data_directory}/plots/plot.png",
+            caption="../report/plot.rst",
+        ),
     conda:
         "../envs/R_ggplot2.yaml"
     script:
