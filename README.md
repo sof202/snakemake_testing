@@ -6,11 +6,11 @@ of languages and see how everything comes together.
 
 Things I want to learn/test:
 
-- [ ] Syntax
-- [ ] How easy it is to work with
-- [ ] Dependency management
-- [ ] Starting pipeline half-way through
-- [ ] Chopping/changing modules
-- [ ] Config file usage
-- [ ] Job scheduler capabilities
+- [x] Syntax
+- [x] How easy it is to work with
+- [x] Dependency management
+- [x] Starting pipeline half-way through
+- [x] Chopping/changing modules
+- [x] Config file usage
+- [x] Job scheduler capabilities
 - [ ] Conditionality
