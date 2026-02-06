@@ -93,3 +93,14 @@ button (super useful).
 
 If you are to use this, you should probably start being more explicit in your
 file paths (for example, wrapping local files with `local()`).
+
+## Conditionality
+
+So I didn't use this in this repo, it would have been utter overkill for the
+small pipeline I was creating. But I do want to at least add that this is
+possible with regular python conditionals. Best practice states that you should
+be using the `branch()` helper function however.
+
+This would allow you to create certain output files conditionally in certain
+rules. I feel like this would get quite complicated however, so I'd be wary of
+overly using branching.
