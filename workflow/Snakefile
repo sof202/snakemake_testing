@@ -13,7 +13,6 @@ validate(config, schema="schemas/config.schema.yaml")
 include: "rules/create.smk"
 include: "rules/process.smk"
 include: "rules/plot.smk"
-include: "rules/optional_add.smk"
 
 
 rule all:
@@ -21,13 +20,4 @@ rule all:
         expand(
             "{data_directory}/plots/plot.png",
             data_directory=config["data_directory"],
-        ),
-
-
-rule add_all:
-    input:
-        expand(
-            "{data_directory}/{sample}_plus_one.txt",
-            data_directory=config["data_directory"],
-            sample=config["samples"],
         ),
