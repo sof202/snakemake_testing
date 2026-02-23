@@ -117,7 +117,7 @@ if (!exists("is_sourced") || !is_sourced) {
     warning(
       "Script executed outside Snakemake context. ",
       "Please only use this via the `snakemake` workflow manager.\n",
-      "To do this, use `snakemake --cores all --sdn conda`"
+      "To do this, use `snakemake --cores all --sdm conda`"
     )
   }
 }
@@ -141,7 +141,7 @@ if __name__ == "__main__":
         print(
             "Error: Script executed outside Snakemake context. ",
             "Please only use this via the `snakemake` workflow manager.\n",
-            "To do this, use `snakemake --cores all --sdn conda`",
+            "To do this, use `snakemake --cores all --sdm conda`",
         )
 
 ```
